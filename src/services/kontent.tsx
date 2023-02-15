@@ -1,11 +1,12 @@
-import { createDeliveryClient, IContentItem, IContentItemElements } from "@kontent-ai/delivery-sdk";
+import { camelCasePropertyNameResolver, createDeliveryClient, IContentItem, IContentItemElements } from "@kontent-ai/delivery-sdk";
 
 const deliveryClient = createDeliveryClient({
     projectId: process.env.KONTENT_PROJECT_ID ?? '',
     previewApiKey: process.env.KONTENT_PREVIEW_KEY ?? '',
     defaultQueryConfig: {
         usePreviewMode: process.env.KONTENT_PREVIEW_KEY !== '' ? true : false
-    }
+    },
+    propertyNameResolver: camelCasePropertyNameResolver
 });
 
 export async function getItemByCodename<T extends IContentItem<IContentItemElements>>(codename: string, depth: number) {
