@@ -11,9 +11,9 @@ export default async function Home() {
   return (
     <main className={styles.main}>
       <div>
-        <div>
+        <h1>
           {home.elements.title.value}
-        </div>
+        </h1>
         <div>
           <h2>Featured</h2>
           {featured.length > 0 &&
