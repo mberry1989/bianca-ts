@@ -3,25 +3,28 @@ import Link from "next/link";
 
 type AppProps = {
     menu: Page[];
-  };
+};
 
 const Navigation = ({ menu }: AppProps) => {
-    return ( 
+    return (
         <nav>
-          <ul>
-            {menu && menu.map(page => {
-              return (
-                <li key={page.system.id}>
-                    <Link href={page.elements.url.value}>
-                        {page.elements.title.value}
-                    </Link>
+            <ul>
+                <li>
+                    <Link href='/' >Home</Link>
                 </li>
-              )
-            })
-            }
-          </ul>
+                {menu && menu.map(page => {
+                    return (
+                        <li key={page.system.id}>
+                            <Link href={page.elements.url.value}>
+                                {page.elements.title.value}
+                            </Link>
+                        </li>
+                    )
+                })
+                }
+            </ul>
         </nav>
-     );
+    );
 }
- 
+
 export default Navigation;
