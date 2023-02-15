@@ -16,7 +16,10 @@ export async function getItemByCodename<T extends IContentItem<IContentItemEleme
     return response.data.item
 }
 
-export async function getItemByUrlSlug<T extends IContentItem<IContentItemElements>>(element: string, slug: string, depth: number) {
+export async function getItemByUrlSlug<T extends IContentItem<IContentItemElements>>(
+        element: string,
+        slug: string,
+        depth: number) {
     const response = await deliveryClient.items<T>()
         .equalsFilter(element, slug)
         .depthParameter(depth)
@@ -42,10 +45,15 @@ export async function getItemsOfType<T extends IContentItem<IContentItemElements
     return response.data.items
 }
 
-export async function getNavigationItems<T extends IContentItem<IContentItemElements>>(homepageCodename: string, subpagesCodename: string, depth: number) {
+export async function getNavigationItems<T extends IContentItem<IContentItemElements>>(
+        homepageCodename: string, 
+        subpagesCodename: string, 
+        titleCodename: string, 
+        urlCodename: string, 
+        depth: number) {
     const response = await deliveryClient.item<T>(homepageCodename)
         .depthParameter(depth)
-        .elementsParameter([subpagesCodename])
+        .elementsParameter([subpagesCodename, titleCodename, urlCodename])
         .toPromise()
 
     return response.data.item
