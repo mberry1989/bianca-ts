@@ -1,4 +1,5 @@
 import { ContentBlock } from "@/models";
+import RichTextComponent from "./RichTextComponent";
 
 type AppProps = {
     item: ContentBlock
@@ -7,7 +8,10 @@ type AppProps = {
 const ContentComponent = ({ item }: AppProps) => {
     return ( 
         <>
-        <div>{item.elements.headline.value}</div>
+        <h3>{item.elements.headline.value}</h3>
+        <div>
+            <RichTextComponent item={item as ContentBlock}/>
+        </div>
         </>
      );
 }

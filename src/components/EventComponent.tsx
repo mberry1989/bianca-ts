@@ -1,4 +1,5 @@
 import { Event } from "@/models";
+import RichTextComponent from "./RichTextComponent";
 type AppProps = {
     item: Event
 }
@@ -6,7 +7,10 @@ type AppProps = {
 const EventComponent = ({ item }: AppProps) => {
     return (
         <>
-            {item.elements.name.value}
+        <h3>{item.elements.name.value}</h3>
+        <div>
+            <RichTextComponent item={item} />
+        </div>
         </>
     );
 }

@@ -1,4 +1,5 @@
 import { Post } from "@/models";
+import RichTextComponent from "./RichTextComponent";
 
 type AppProps = {
     item: Post
@@ -7,7 +8,10 @@ type AppProps = {
 const PostComponent = ({ item }: AppProps) => {
     return (
         <>
-            {item.elements.title.value}
+        <h3>{item.elements.title.value}</h3>
+        <div>
+            <RichTextComponent item={item} />
+        </div>
         </>
     );
 }
