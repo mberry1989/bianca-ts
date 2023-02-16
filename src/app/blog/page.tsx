@@ -2,6 +2,8 @@ import { contentTypes, Page, Post } from '@/models'
 import { getItemByUrlSlug, getItemsOfType } from '@/services/kontent'
 import styles from '@/app/page.module.css'
 import ComposableLayout from '@/components/ComposableLayout'
+import CardComponent from '@/components/CardComponent'
+import Link from 'next/link'
 
 export default async function Blog(){
     const page = await getPageData()
@@ -16,7 +18,11 @@ export default async function Blog(){
             {content.length > 0 && content.map(item => (<ComposableLayout item={item} key={item.system.id} />))}
           </div>
           <div>
-            {posts && posts.map(post => (post.elements.title.value))}
+            {posts && posts.map(post => (
+              <Link href={`/blog/${post.elements.url.value}`} key={post.system.id}>
+                <CardComponent item={post} />
+              </Link>
+              ))}
           </div>
         </div>
       </main>

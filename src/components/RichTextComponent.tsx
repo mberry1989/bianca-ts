@@ -1,5 +1,4 @@
 import { Certification, ContentBlock, contentTypes, Event, Feature, Organization, Person, Post, Service } from '@/models';
-import { Elements } from '@kontent-ai/delivery-sdk';
 import { isComponent, isLinkedItem, RichTextElement } from '@kontent-ai/react-components';
 import { Element as DomHandlerElement } from 'domhandler';
 
@@ -8,7 +7,6 @@ type AppProps = {
 }
 
 const RichTextComponent = ({ item }: AppProps) => {
-
     const evalType = (type: string) => {
         switch (type) {
             case contentTypes.content_block.codename:
@@ -33,7 +31,7 @@ const RichTextComponent = ({ item }: AppProps) => {
 
     return (
         <RichTextElement
-            richTextElement={ richText }
+            richTextElement={richText}
             resolvers={{
                 resolveLinkedItem: (linkedItem, { domElement, domToReact }) => {
                     if (isComponent(domElement)) {
@@ -49,7 +47,7 @@ const RichTextComponent = ({ item }: AppProps) => {
                             <>
                                 <h1>Linked item</h1>
                                 <pre>{JSON.stringify(linkedItem, undefined, 2)}</pre>;
-                                
+
                             </>
                         );
                     }
